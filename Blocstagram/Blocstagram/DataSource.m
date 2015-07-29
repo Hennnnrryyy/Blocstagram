@@ -117,9 +117,10 @@
     return [NSString stringWithString:s];
 }
 
-- (void) deleteMediaItem:(Media *)item {
+- (void) moveMediaItemToTop:(Media *)item {
     NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
     [mutableArrayWithKVO removeObject:item];
+    [mutableArrayWithKVO insertObject:item atIndex:0];
 }
 
 #pragma mark - Key/Value Observing
