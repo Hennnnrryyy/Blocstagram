@@ -182,6 +182,9 @@
         [self presentViewController:activityVC animated:YES completion:nil];
     }
 }
+- (void) cell:(MediaTableViewCell *)cell didDoubleTap:(UIImageView *)imageView{
+    [[DataSource sharedInstance] reloadMediaItem:cell.mediaItem];
+}
 
 #pragma mark - UIViewControllerTransitioningDelegate
 

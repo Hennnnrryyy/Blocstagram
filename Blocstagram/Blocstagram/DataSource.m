@@ -107,6 +107,11 @@
     NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
     [mutableArrayWithKVO removeObject:item];
 }
+- (void) reloadMediaItem:(Media *)item {
+    if(!item.image){
+        [self downloadImageForMediaItem:item];
+    }
+}
 
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
     self.thereAreNoMoreOlderMessages = NO;
