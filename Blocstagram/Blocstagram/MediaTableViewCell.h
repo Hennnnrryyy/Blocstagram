@@ -13,7 +13,7 @@
 @protocol MediaTableViewCellDelegate <NSObject>
 
 - (void) cell:(MediaTableViewCell *)cell didTapImageView:(UIImageView *)imageView;
-- (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIImageView *)imageView;
+- (void) cell:(MediaTableViewCell *)cell didLongPressImageView:(UIViewController *)viewController;
 
 @end
 
@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) Media *mediaItem;
 @property (nonatomic, weak) id <MediaTableViewCellDelegate> delegate;
+@property (nonatomic, strong) UIViewController *fatherView;
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width;
 

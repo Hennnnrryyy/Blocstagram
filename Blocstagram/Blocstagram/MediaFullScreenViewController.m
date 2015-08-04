@@ -14,17 +14,19 @@
 @property (nonatomic, strong) Media *media;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong) UIButton *shareButton;
 
 @end
 
 @implementation MediaFullScreenViewController
 
 
-- (instancetype) initWithMedia:(Media *)media {
+- (instancetype) initWithMedia:(Media *)media cell:(MediaTableViewCell *)cell {
     self = [super init];
     
     if (self) {
         self.media = media;
+        self.cell = cell;
     }
     
     return self;
@@ -61,6 +63,16 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+    
+    self.shareButton = [[UIButton alloc]init];
+    [self.shareButton setTitle:NSLocalizedString(@"Share", @"Share") forState:UIControlStateNormal];
+    UIColor *buttonTextColor = [[UIColor alloc] initWithRed:0.0 green:0.500 blue:0.800 alpha:1.0];
+    
+    [self.shareButton setTitleColor:buttonTextColor forState:UIControlStateNormal];
+    [self.shareButton addTarget:self action:@selector(didPressShare:) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareButton setFrame:CGRectMake(self.view.frame.size.width - 60, 10, 50, 50)];
+    
+    [self.view addSubview:self.shareButton];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -134,6 +146,11 @@
         // #9
         [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
     }
+}
+
+- (void) didPressShare: (UIButton *)button{
+    NSLog(@"%@",self.cell.mediaItem.caption);
+    [self.delegate cell:self.cell didLongPressImageView:self];
 }
 
 #pragma mark - UIScrollViewDelegate

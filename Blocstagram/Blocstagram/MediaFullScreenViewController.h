@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaTableViewCell.h"
 
 @class Media;
 
@@ -14,8 +15,13 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) MediaTableViewCell *cell;
 
-- (instancetype) initWithMedia:(Media *)media;
+@property (nonatomic, weak) id <MediaTableViewCellDelegate> delegate;
+
+- (instancetype) initWithMedia:(Media *)media cell:(MediaTableViewCell *)cell;
+
+
 
 - (void) centerScrollView;
 
