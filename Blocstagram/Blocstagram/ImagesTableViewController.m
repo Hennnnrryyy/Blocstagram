@@ -15,7 +15,7 @@
 #import "MediaFullScreenViewController.h"
  #import "MediaFullScreenAnimator.h"
 
-@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIImageView *lastTappedImageView;
 
@@ -121,6 +121,10 @@
     [self infiniteScrollIfNecessary];
 }
 
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    scrollView.decelerationRate = 180.0;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -206,7 +210,6 @@
     animator.cellImageView = self.lastTappedImageView;
     return animator;
 }
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
