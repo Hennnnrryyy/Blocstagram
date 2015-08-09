@@ -175,6 +175,7 @@
 }
 
 - (void) parseDataFromFeedDictionary:(NSDictionary *) feedDictionary fromRequestWithParameters:(NSDictionary *)parameters {
+    //NSLog(@"%@",feedDictionary);
     NSArray *mediaArray = feedDictionary[@"data"];
     
     NSMutableArray *tmpMediaItems = [NSMutableArray array];
@@ -299,13 +300,14 @@
         
         [self.instagramOperationManager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             mediaItem.likeState = LikeStateLiked;
+            mediaItem.numberOfLikes = [NSNumber numberWithInt:[mediaItem.numberOfLikes intValue] + 1];
             
             if (completionHandler) {
                 completionHandler();
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             mediaItem.likeState = LikeStateNotLiked;
-            
+
             if (completionHandler) {
                 completionHandler();
             }
@@ -317,6 +319,7 @@
         
         [self.instagramOperationManager DELETE:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             mediaItem.likeState = LikeStateNotLiked;
+            mediaItem.numberOfLikes = [NSNumber numberWithInt:[mediaItem.numberOfLikes intValue] - 1];
             
             if (completionHandler) {
                 completionHandler();

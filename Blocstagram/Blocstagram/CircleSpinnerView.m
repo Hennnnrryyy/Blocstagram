@@ -90,8 +90,8 @@
         _circleLayer.fillColor = [UIColor clearColor].CGColor;
         _circleLayer.strokeColor = self.strokeColor.CGColor;
         _circleLayer.lineWidth = self.strokeThickness;
-        _circleLayer.lineCap = kCALineCapRound;
-        _circleLayer.lineJoin = kCALineJoinBevel;
+        _circleLayer.lineCap = kCALineCapSquare;
+        _circleLayer.lineJoin = kCALineJoinRound;
         _circleLayer.path = smoothedPath.CGPath;
         
         CALayer *maskLayer = [CALayer layer];
@@ -99,14 +99,14 @@
         maskLayer.frame = _circleLayer.bounds;
         _circleLayer.mask = maskLayer;
         
-        CFTimeInterval animationDuration = 1;
-        CAMediaTimingFunction *linearCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+        CFTimeInterval animationDuration = 0.5;
+        CAMediaTimingFunction *easeInAndOut = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         animation.fromValue = @0;
         animation.toValue = @(M_PI*2);
         animation.duration = animationDuration;
-        animation.timingFunction = linearCurve;
+        animation.timingFunction = easeInAndOut;
         animation.removedOnCompletion = NO;
         animation.repeatCount = INFINITY;
         animation.fillMode = kCAFillModeForwards;
@@ -117,7 +117,7 @@
         animationGroup.duration = animationDuration;
         animationGroup.repeatCount = INFINITY;
         animationGroup.removedOnCompletion = NO;
-        animationGroup.timingFunction = linearCurve;
+        animationGroup.timingFunction = easeInAndOut;
         
         CABasicAnimation *strokeStartAnimation = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
         strokeStartAnimation.fromValue = @0.015;
