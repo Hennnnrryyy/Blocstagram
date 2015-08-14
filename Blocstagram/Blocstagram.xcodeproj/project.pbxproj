@@ -39,6 +39,9 @@
 		2EA0C53C1B65E2AF00FB7094 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0C53B1B65E2AF00FB7094 /* DataSource.m */; };
 		2EA0C53F1B66C0DE00FB7094 /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0C53E1B66C0DE00FB7094 /* MediaTableViewCell.m */; };
 		2EA0C5421B6C7D0B00FB7094 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0C5411B6C7D0B00FB7094 /* LoginViewController.m */; };
+		2EC81C9E1B7E6EF900D7EE4E /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81C9D1B7E6EF900D7EE4E /* CropBox.m */; };
+		2EC81CA11B7E711100D7EE4E /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81CA01B7E711100D7EE4E /* CropImageViewController.m */; };
+		2EC81CA41B7E73D300D7EE4E /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81CA31B7E73D300D7EE4E /* ImageLibraryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +106,12 @@
 		2EA0C53E1B66C0DE00FB7094 /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 		2EA0C5401B6C7D0B00FB7094 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2EA0C5411B6C7D0B00FB7094 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2EC81C9C1B7E6EF900D7EE4E /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
+		2EC81C9D1B7E6EF900D7EE4E /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
+		2EC81C9F1B7E711100D7EE4E /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
+		2EC81CA01B7E711100D7EE4E /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
+		2EC81CA21B7E73D300D7EE4E /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
+		2EC81CA31B7E73D300D7EE4E /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
 		4764A6491762BECB4CC8D576 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		58B2EA5A320E29424B7EA135 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DFC9A2F60B59F62F3BAF80DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +192,12 @@
 				2E4FDD8D1B7A427000D7EEA6 /* CameraViewController.m */,
 				2E4FDD8F1B7A46C900D7EEA6 /* UIImage+ImageUtilities.h */,
 				2E4FDD901B7A46C900D7EEA6 /* UIImage+ImageUtilities.m */,
+				2EC81C9C1B7E6EF900D7EE4E /* CropBox.h */,
+				2EC81C9D1B7E6EF900D7EE4E /* CropBox.m */,
+				2EC81C9F1B7E711100D7EE4E /* CropImageViewController.h */,
+				2EC81CA01B7E711100D7EE4E /* CropImageViewController.m */,
+				2EC81CA21B7E73D300D7EE4E /* ImageLibraryViewController.h */,
+				2EC81CA31B7E73D300D7EE4E /* ImageLibraryViewController.m */,
 				2EA0C4FA1B64A17700FB7094 /* Main.storyboard */,
 				2EA0C4FD1B64A17700FB7094 /* Images.xcassets */,
 				2EA0C4FF1B64A17700FB7094 /* LaunchScreen.xib */,
@@ -302,6 +317,7 @@
 				TargetAttributes = {
 					2EA0C4EC1B64A17700FB7094 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 49S62L6F38;
 					};
 					2EA0C5051B64A17700FB7094 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -397,17 +413,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E3EB49E1B6FA30A009B73D0 /* MediaFullScreenViewController.m in Sources */,
+				2EC81CA11B7E711100D7EE4E /* CropImageViewController.m in Sources */,
 				2EA0C5331B65E15300FB7094 /* User.m in Sources */,
 				2EA0C5391B65E23B00FB7094 /* Comment.m in Sources */,
 				2EA0C53F1B66C0DE00FB7094 /* MediaTableViewCell.m in Sources */,
 				2E3EB4A11B6FE10B009B73D0 /* MediaFullScreenAnimator.m in Sources */,
 				2EA0C5361B65E1A100FB7094 /* Media.m in Sources */,
 				2EA0C4F61B64A17700FB7094 /* AppDelegate.m in Sources */,
+				2EC81C9E1B7E6EF900D7EE4E /* CropBox.m in Sources */,
 				2EA0C5421B6C7D0B00FB7094 /* LoginViewController.m in Sources */,
 				2EA0C53C1B65E2AF00FB7094 /* DataSource.m in Sources */,
 				2E4FDD8E1B7A427000D7EEA6 /* CameraViewController.m in Sources */,
 				2E4FDD8B1B7A411600D7EEA6 /* CameraToolbar.m in Sources */,
 				2EA0C4F31B64A17700FB7094 /* main.m in Sources */,
+				2EC81CA41B7E73D300D7EE4E /* ImageLibraryViewController.m in Sources */,
 				2E4FDD851B745B7700D7EEA6 /* LikeButton.m in Sources */,
 				2E4FDD911B7A46C900D7EEA6 /* UIImage+ImageUtilities.m in Sources */,
 				2E4FDD881B79A2AB00D7EEA6 /* ComposeCommentView.m in Sources */,
@@ -541,9 +560,14 @@
 			baseConfigurationReference = 4764A6491762BECB4CC8D576 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Blocstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -552,9 +576,14 @@
 			baseConfigurationReference = 58B2EA5A320E29424B7EA135 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Blocstagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
