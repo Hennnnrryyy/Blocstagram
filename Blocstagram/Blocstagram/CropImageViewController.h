@@ -22,4 +22,5 @@
 
 @property (nonatomic, weak) NSObject <CropImageViewControllerDelegate> *delegate;
 
+
 @end

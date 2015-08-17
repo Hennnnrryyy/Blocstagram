@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) CropBox *cropBox;
 @property (nonatomic, assign) BOOL hasLoadedOnce;
+@property (nonatomic, strong) UIToolbar *topView;
+@property (nonatomic, strong) UIToolbar *bottomView;
+
 
 @end
 
@@ -50,6 +53,19 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+    
+    
+    self.topView = [UIToolbar new];
+    self.bottomView = [UIToolbar new];
+    UIColor *whiteBG = [UIColor colorWithWhite:1.0 alpha:.15];
+    
+    self.topView.barTintColor = whiteBG;
+    self.bottomView.barTintColor = whiteBG;
+    self.topView.alpha = 0.5;
+    self.bottomView.alpha = 0.5;
+    [self.view addSubview: self.topView];
+    [self.view addSubview: self.bottomView];
+    
 }
 
 - (void) viewWillLayoutSubviews {
@@ -66,6 +82,13 @@
     self.cropBox.center = CGPointMake(size.width / 2, size.height / 2);
     self.scrollView.frame = self.cropBox.frame;
     self.scrollView.clipsToBounds = NO;
+    
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, CGRectGetMinY(self.cropBox.bounds) + 82);
+    
+    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
+    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
     
     [self recalculateZoomScale];
     

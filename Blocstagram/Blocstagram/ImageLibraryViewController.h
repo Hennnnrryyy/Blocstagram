@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @class ImageLibraryViewController;
 
@@ -19,5 +20,7 @@
 @interface ImageLibraryViewController : UICollectionViewController
 
 @property (nonatomic, weak) NSObject <ImageLibraryViewControllerDelegate> *delegate;
+@property (nonatomic, strong) PHFetchResult *result;
+- (void) cropControllerFinishedWithImage:(UIImage *)croppedImage;
 
 @end

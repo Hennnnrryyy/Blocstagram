@@ -9,10 +9,9 @@
 #import "ImageLibraryViewController.h"
 #import <Photos/Photos.h>
 #import "CropImageViewController.h"
+#import "iCloudPhotoViewController.h"
 
-@interface ImageLibraryViewController () <CropImageViewControllerDelegate>
-
-@property (nonatomic, strong) PHFetchResult *result;
+@interface ImageLibraryViewController () <CropImageViewControllerDelegate, iCloudPhotoViewControllerDelegate>
 
 @end
 
@@ -36,11 +35,22 @@
     
     UIImage *cancelImage = [UIImage imageNamed:@"x"];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithImage:cancelImage style:UIBarButtonItemStyleDone target:self action:@selector(cancelPressed:)];
+    
+    self.navigationItem.title = NSLocalizedString(@"Your Photos", @"Your photographs");
+    UIBarButtonItem *icloudPhotos = [[UIBarButtonItem alloc] initWithTitle:@"iCloud" style:UIBarButtonItemStyleDone target:self action:@selector(icloudPhotosPressed:)];
+    
+    self.navigationItem.rightBarButtonItem = icloudPhotos;
     self.navigationItem.leftBarButtonItem = cancelButton;
 }
 
 - (void) cancelPressed:(UIBarButtonItem *)sender {
     [self.delegate imageLibraryViewController:self didCompleteWithImage:nil];
+}
+
+- (void) icloudPhotosPressed:(UIBarButtonItem *)sender {
+    iCloudPhotoViewController *cloudVC = [[iCloudPhotoViewController alloc] init];
+    cloudVC.delegate = self;
+    [self.navigationController pushViewController:cloudVC animated:YES];
 }
 
 - (void) viewWillLayoutSubviews {
@@ -60,7 +70,6 @@
 - (void) loadAssets {
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
     options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-    
     self.result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
 }
 
@@ -98,6 +107,7 @@
         imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
+        imageView.frame = CGRectMake(CGRectGetMinX(imageView.frame) + 1, CGRectGetMinY(imageView.frame) + 1, CGRectGetMaxX(imageView.frame) - 1, CGRectGetMaxY(imageView.frame) - 1);
         [cell.contentView addSubview:imageView];
     }
     
@@ -140,6 +150,11 @@
 
 - (void) cropControllerFinishedWithImage:(UIImage *)croppedImage {
     [self.delegate imageLibraryViewController:self didCompleteWithImage:croppedImage];
+}
+
+#pragma mark - iCloudPhotViewController
+- (void) iCloudPhotoViewController:(iCloudPhotoViewController *)iCloudPhotoViewController didCompleteWithImage:(UIImage *)image{
+    [self.delegate imageLibraryViewController:self didCompleteWithImage:image];
 }
 
 @end

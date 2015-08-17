@@ -79,5 +79,6 @@
         
         verticalLine.frame = verticalFrame;
     }
+    
 }
 @end
