@@ -32,6 +32,8 @@
 @property (nonatomic, strong) LikeButton *likeButton;
 @property (nonatomic, strong) ComposeCommentView *commentView;
 
+
+
 @end
 
 static UIFont *lightFont;

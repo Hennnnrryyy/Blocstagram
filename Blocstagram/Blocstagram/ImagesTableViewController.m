@@ -65,6 +65,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
 }
 
 
@@ -147,8 +148,6 @@
         [[DataSource sharedInstance] requestOldItemsWithCompletionHandler:nil];
     }
 }
-
-
 
 #pragma mark - UIScrollViewDelegate
 

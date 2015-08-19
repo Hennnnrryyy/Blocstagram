@@ -50,7 +50,7 @@
     // #3
     self.scrollView.contentSize = self.media.image.size;
     
-    
+   
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
     
     self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapFired:)];
@@ -119,6 +119,16 @@
 #pragma mark - Gesture Recognizers
 
 - (void) tapFired:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint location = [sender locationInView:self.view.window];
+        
+        if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window] withEvent:nil]){
+            [self.view.window removeGestureRecognizer:self.tap];
+            NSLog(@"Hey");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

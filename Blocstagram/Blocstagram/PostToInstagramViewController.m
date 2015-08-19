@@ -72,8 +72,12 @@
     
     [self.view addSubview:self.previewImageView];
     [self.view addSubview:self.filterCollectionView];
+    if(self.navigationController.modalPresentationStyle == UIModalPresentationPopover){
+        self.modalInPopover = YES;
+    }
     
-    if (CGRectGetHeight(self.view.frame) > 500) {
+    NSLog(@"%@", self.modalInPopover ? @"YES" : @"NO");
+    if (CGRectGetHeight(self.view.frame) > 500 && !self.modalInPopover) {
         [self.view addSubview:self.sendButton];
     } else {
         self.navigationItem.rightBarButtonItem = self.sendBarButton;
@@ -383,7 +387,7 @@
         self.documentController.annotation = @{@"InstagramCaption": caption};
     }
     
-    if (self.sendButton.superview) {
+    if (self.sendButton.superview && !self.modalInPopover) {
         [self.documentController presentOpenInMenuFromRect:self.sendButton.bounds inView:self.sendButton animated:YES];
     } else {
         [self.documentController presentOpenInMenuFromBarButtonItem:self.sendBarButton animated:YES];
