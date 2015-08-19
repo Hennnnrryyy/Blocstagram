@@ -327,6 +327,43 @@
             [self addCIImageToCollectionView:composite.outputImage withFilterTitle:NSLocalizedString(@"Film", @"Film Filter")];
         }
     }];
+    
+    
+    // False Color filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *falseColorFilter = [CIFilter filterWithName:@"CIFalseColor"];
+        
+        if (falseColorFilter) {
+            [falseColorFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:falseColorFilter.outputImage withFilterTitle:NSLocalizedString(@"False Color", @"False Color Filter")];
+        }
+    }];
+    
+    
+    // Gloom filter
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *gloomFilter = [CIFilter filterWithName:@"CIGloom"];
+        CIFilter *tiltFilter = [CIFilter filterWithName:@"CIDiscBlur"];
+        
+        if (gloomFilter) {
+            [gloomFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [gloomFilter setValue:@1 forKey:kCIInputIntensityKey];
+            
+            CIImage *result = gloomFilter.outputImage;
+            
+            if (tiltFilter) {
+                [tiltFilter setValue:result forKeyPath:kCIInputImageKey];
+                [tiltFilter setValue:@500 forKey:kCIInputRadiusKey];
+                result = tiltFilter.outputImage;
+            }
+            
+            [self addCIImageToCollectionView:result withFilterTitle:NSLocalizedString(@"Gloom", @"Gloom Filter")];
+        }
+    }];
+    
+    
 }
 
 - (void) sendButtonPressed:(id)sender {
