@@ -43,6 +43,7 @@
 		2EC81C9E1B7E6EF900D7EE4E /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81C9D1B7E6EF900D7EE4E /* CropBox.m */; };
 		2EC81CA11B7E711100D7EE4E /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81CA01B7E711100D7EE4E /* CropImageViewController.m */; };
 		2EC81CA41B7E73D300D7EE4E /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC81CA31B7E73D300D7EE4E /* ImageLibraryViewController.m */; };
+		2EE3D1F31B8BA853006D803D /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3D1F21B8BA853006D803D /* UserTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		2EC81CA01B7E711100D7EE4E /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
 		2EC81CA21B7E73D300D7EE4E /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
 		2EC81CA31B7E73D300D7EE4E /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
+		2EE3D1F21B8BA853006D803D /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		4764A6491762BECB4CC8D576 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		58B2EA5A320E29424B7EA135 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DFC9A2F60B59F62F3BAF80DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				2EA0C50C1B64A17700FB7094 /* BlocstagramTests.m */,
+				2EE3D1F21B8BA853006D803D /* UserTests.m */,
 				2EA0C50A1B64A17700FB7094 /* Supporting Files */,
 			);
 			path = BlocstagramTests;
@@ -445,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EE3D1F31B8BA853006D803D /* UserTests.m in Sources */,
 				2EA0C50D1B64A17700FB7094 /* BlocstagramTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
